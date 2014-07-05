@@ -1,0 +1,46 @@
+apply from: "gradle/vertx.gradle"
+
+dependencies {
+	compile "com.tinkerpop.rexster:rexster-protocol:$rexsterVersion"
+	testCompile "com.tinkerpop.rexster:rexster-server:$rexsterVersion"
+	testCompile "com.sun.jersey:jersey-core:1.17"
+}
+
+test {
+
+}
+
+def configurePom(def pom) {
+  pom.project {
+    name rootProject.name
+    description 'Rexster persistor'
+    inceptionYear '2014'
+    packaging 'zip'
+
+    url 'https://github.com/dboissin/mod-rexster'
+
+    developers {
+      developer {
+        id 'dboissin'
+        name 'Damien BOISSIN'
+        email 'damien.boissin@gmail.com'
+      }
+    }
+
+    scm {
+      url 'https://github.com/dboissin/mod-rexster.git'
+    }
+
+    licenses {
+      license {
+        name 'The Apache Software License, Version 2.0'
+        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+        distribution 'repo'
+      }
+    }
+
+    properties {
+      setProperty('project.build.sourceEncoding', 'UTF8')
+    }
+  }
+}
